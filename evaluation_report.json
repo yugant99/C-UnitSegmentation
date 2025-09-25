@@ -1,0 +1,78 @@
+[
+  {
+    "file_name": "VR_Falcon (FLAN-T5 Refined).txt",
+    "c_unit_accuracy": 0.0,
+    "pause_accuracy": 0.041666666666666664,
+    "filled_pause_accuracy": 0.25925925925925924,
+    "morphological_accuracy": 0.0,
+    "speaker_accuracy": 0.4519230769230769,
+    "overall_similarity": 0.03013597941933113,
+    "detailed_comparison": {
+      "c_unit_analysis": {
+        "system_count": 83,
+        "gold_count": 104,
+        "count_difference": 21,
+        "sample_system": [
+          "P: Hi Nala, I'm {redacted}, I'm your nurse today.",
+          "Av: (Uh [FP]), (oh [FP]), hi, I don't know you, I don't need help.",
+          "P: Nala, I'm here to get help you get ready for today."
+        ],
+        "sample_gold": [
+          "P: Hi Nala, I'm {Redacted}.",
+          "P: I'm your nurse today.",
+          "Av: Oh, hi."
+        ]
+      },
+      "pause_counts": {
+        "system": 72,
+        "gold": 66
+      },
+      "filled_pause_counts": {
+        "system": 23,
+        "gold": 27
+      },
+      "morphological_counts": {
+        "system": 5,
+        "gold": 0
+      }
+    }
+  },
+  {
+    "file_name": "VR_Lady_Bird_Transcript (FLAN-T5 Refined).txt",
+    "c_unit_accuracy": 0.03409090909090909,
+    "pause_accuracy": 0.029850746268656716,
+    "filled_pause_accuracy": 0.2857142857142857,
+    "morphological_accuracy": 0.0,
+    "speaker_accuracy": 0.4772727272727273,
+    "overall_similarity": 0.05352862849533955,
+    "detailed_comparison": {
+      "c_unit_analysis": {
+        "system_count": 77,
+        "gold_count": 88,
+        "count_difference": 11,
+        "sample_system": [
+          "P: Good morning, Nala.",
+          "Av: (Oh [FP]). Hi.",
+          "P: Would you like to get up now, Nala?"
+        ],
+        "sample_gold": [
+          "P: Good morning, Nala.",
+          "Av: (Uh [FP]) oh, hi!",
+          "P: Would you like to get up now, Nala?"
+        ]
+      },
+      "pause_counts": {
+        "system": 64,
+        "gold": 67
+      },
+      "filled_pause_counts": {
+        "system": 21,
+        "gold": 28
+      },
+      "morphological_counts": {
+        "system": 4,
+        "gold": 0
+      }
+    }
+  }
+]
