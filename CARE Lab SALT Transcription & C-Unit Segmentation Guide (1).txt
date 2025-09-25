@@ -1,0 +1,182 @@
+﻿Transcript Format:
+$Av= Avatar, $P=Participant
++ Language: English
++ ParticipantId: (name of file)
++ Context: Assessment vignette, Be EPIC-VR
++ Date and initials of Verbal Transcription: DD/MM/YYYY
++ Date and initials of Nonverbal Transcription: DD/MM/YYYY
++ Date and initials of FINAL Transcription: DD/MM/YYYY
+
+- 0:00
+P: Hi Linda {PN: pasts Linda on shoulder} Av: (who) who are you?
+P: I am Sarah.
+P: I am here to help you get ready for the day.
+$	Identifies the speakers in the transcript; generally, the first line of the transcript.
+Example:
+Av: represents verbal utterances of the Avatar
+P:  represents verbal utterances of the Participant
+AvN:	represents non-verbal utterances of the Avatar PN: represents non-verbal utterances of the Participant
+
++	Typically used for identifying information such as participant ID, date of transcription, and context. Mark concomitant behaviours that occur throughout the entire audio sample at the beginning of the transcript. This includes: vocal quality, distracting sounds such as fast or shallow breathing, sigh, whistle etc.
+=	Comment line. This information is not analyzed but is used for transcriber comments. Can be used to comment on vocal quality, audio quality, if Participant talks to the facilitator, etc.
+-	Start and End time marker.	Example of two-minute marker: - 2:00
+*Note: also include end time (- X:XX) at the end of the transcript
+
+Non-verbal Behaviour
+{ } Comments within an utterance. Nonverbal behaviours with communication intent are placed in brackets or to give context of the situation. Place AvN: and PN: codes within {	} code. See non-verbal behaviour definition. If you are giving context to the situation, do not use : (Av: laying in bed) but should be (Av laying in bed)
+Example 1:	P: Hi Linda {PN: gently touches Av's shoulder. AvN: smiles}
+Versus
+Example 2:	P: Linda, :do you want some breakfast? {Av is sitting in bed}
+
+Note: AvN: and PN: are used when a non-verbal behaviour is used to complement the verbal utterance or used to replace a verbal utterance.
+Note: If the non-verbal behaviour is occurring at the same time as the speech segment, use the non- verbal behaviour code on the same line. If the non-verbal behaviour occurs after the speech segment, use the non-verbal behaviour code on the next line.
+Example 1:	Av: I don't want that {AvN: points to blue shirt} Versus
+Example 2:	Av: I cant see you
+{AvN: pointing to Participant glasses}
+Pauses
+:	Pause within utterances of same speaker. Mark the time if the pause is more than 2 seconds. Example of five-second pause :05
+             Example:	P: My name is Brenda :05 from VON. Note: Pauses 1.5-1.9s= Use : code before the word
+Example: P: Do you want the blue shirt :or the red shirt?
+
+;	Pause between utterances of the Av (Avatar) or P (Participant).
+
+Example1:	P: Do you want to get up
+; :05
+P: *CONJRED and get some breakfast?
+Example 2:	P: Do you want to eat?
+; :03
+Av: No
+
+If there is a pause 1.5-1.9s between utterances use : at the start of the next c-unit.
+Example:	P: Do you want to get up
+P: *CONJRED :and eat some breakfast?
+
+Code Pauses that are 2 seconds and longer. Round to nearest second. Example: 2.3 becomes :02 Round up at half a millisecond. Example: 1.5= 2 seconds
+
+
+Codes
+
+End of Utterance Punctuation. Used at the end of the c-unit
+
+.	Statement, comment. Do not use a period for abbreviations.
+!	Surprise, exclamation.
+?	Question.
+< >	Overlapping speech. If two speakers are speaking at the same time use < > at both segments where there is an overlap.
+Example:	P: Do you want <apples> Av: <yes>
+
+>	Abandoned utterance. The speaker does not complete his/her thought/utterance but has not		been interrupted. Be mindful of when it is an abandoned thought versus a verbal revision (see rule for mazes)
+Example 1:	Av and then she>
+Av I want dinner
+Versus
+Example 2: Av (I wan*) (wanted diner) (I want diner) I want dinner.
+Unintelligible segments. X is used to mark unintelligible sections of an utterance.
+X	marks unintelligible word (Av The man is read/ing the X newspaper.)
+XX	marks unintelligible segment of unspecified length
+XXX	marks unintelligible utterance
+
+Mazes are filled pauses, false starts, repetitions, reformulations, and interjections. Identify a maze by enclosing that part of the c-unit in parentheses. Remaining words can stand alone when maze words are removed from the c-unit.
+
+()	Revisions/reformulations- General rule: If there is a similar start of the c-unit, it is considered a maze. If you think the speaker is revising their thought, words, or message, it is considered a maze. The revised portions remind in ( ). The 'final' thought should not be in (	). Use the > code if you think they abandoned their thought, word or message.
+
+Example:Av: The (woma*) (:man) woman went to the store.()Interjections
+
+Example:
+
+Av: The man (I think it's a man) was reading the newspaper.
+([FP])	Filled pauses
+
+Example:	Av: The (uh [FP]) boy jump/ed up on the table.
+*Filled pauses can include "uh", "um", "hm", "er", "like", "ah" etc.
+
+Omissions. partial words, omitted words, and omitted bound morphemes are denoted by an asterisk (*).
+* Following one or more letters to indicate an unfinished word Example:	Av: The (w*) man got up from the chair.
+* Preceding a word to indicate an obligatory word/part of speech was omitted Example 1:	Av: Give it *to me.
+Example 2:	Av: *SUBJ went to the store.
+(*DET, * SUBJ, *VERB, *COP, *AUX indicate type of omitted word.)
+/*		indicates an omitted bound morpheme. Example:	Av: The car go/*s fast.
+
+
+Linked words. The "_" is used to link multiple words so that they are treated as a single word. Examples include titles of movies and books, compound words, proper names, and words or phrases repeated multiple times.
+Example 1:	Av: The fire_truck was bright red.
+Example 2:	Av: Mr_Frog and Mrs_Frog were across the pond.
+
+Sound effects. The percent sign "%" is used to identify sound effects Example:	Av: The dog said %woof_woof.
+
+Spelling conventions. The following are accepted in SALT Yes words: okay, ok, yeah, yup, yes
+No words: no, nope, nah
+Concatenative: gonna, gotta, wanna, hafta oughta, betcha Numbers: 21 or twentyone
+Other: ain't, oh, uhoh, oops, ooh, huh, hmm
+
+
+C-Unit Segmentation Rules
+The analysis of oral language samples requires recorded speech to be divided into units. This document describes the rules for segmenting utterances into Communication units (C-units).
+
+A C-unit:
+* Is an independent clause with all of its modifiers
+* Includes a main clause with all of its subordinating clauses attached to it
+   * Cannot be further divided without losing its meaning A Clause:
+* Can be the main clause or a subordinate clause
+* Contains a subject (i.e. a noun phrase) and a predicate (i.e. a verb phrase)
+
+
+Example of C-unit that contains a main clause only: Av: The wife was angry.
+Example of C-unit that contains a main clause and a subordinate clause:
+Av: When the boy look/ed in the jar he saw that the frog was missing.
+Coordinating Conjunctions:
+* Utterances containing a coordinating conjunction it should be separated into 2 C-units
+* Coordinating conjunctions include: and, or, but, so (but not "so that"), and then.
+Example:
+Av The wife pack/ed her bag. Av and she left him.
+
+Subordinating Conjunctions:
+* Subordinating conjunctions link a main clause with a subordinate clause
+* Utterances containing a subordinating conjunction should remain as 1 C-unit
+* Subordinating conjunctions include: because, that, when, who, after, before, so (that), which, although, if, unless, while, as, how, until, like, where, since,
+Example:
+Av She came back because she crash/ed the car into a tree.
+
+Note: "So" can be a coordinating or a subordinating conjunction. It is a coordinating conjunction unless its meaning is "so that" then it becomes a subordinating conjunction
+Example of "so" as a coordinating conjunction: Av They were happy again.
+Av So they lived happily ever after.
+
+Example of "so" as a subordinating conjunction:
+Av He had to call the insurance company so the car would get fix/ed.
+
+Yes/No/Okay responses:
+   * When speaker responds with "yes" or "no" it is a separate C-unit Example:
+P: Are you finished? Av: Yeah.
+Av: That's it.
+Example:
+Av: Okay The woman is yelling at her husband.
+
+Conjunction reduced:
+* Speakers use reduced conjunctions in order to increase efficiency of communication
+* To recognize reduced conjunctions look for C-units that begin with "and" and are missing a subject but contain a verb that refers to the subject mentioned in the previous C-unit
+Example:
+Av The wife went up to her room.
+       Av *CONJRED and pack/ed her bag. (Note, 2023 update - we are not adding the code CONJRED- it's only include here to show where the reduced conjunction lies)
+Note: Do not break the c-unit if you hear a conjunction and two nouns Example: Av: I want to wear the red shirt and blue pants.
+
+Tags and questions as tags:
+   * Tags such as "you know", "I guess", and "I mean" are not segmented as individual C-unit Example of tag in statement:
+Av: She smash/ed the car into the tree I guess.
+
+Example of tag in question:
+Av: She went out the door right?
+
+
+Dialogue:
+* Dialogue quotes which are embedded in, or as part of, an utterance are counted as one C-unit
+
+* Successive main clauses that occur in dialogue quotes are counted as separate C-units
+
+Example:
+Av: She said I/'ve had enough. Av: I am leave/ing you!
+*CONJRED indicates a conjunction reduced utterance and is placed at the beginning of the c-unit
+Av: He gets out of his chair.
+Av: *CONJRED and walks over to the door.
+OR
+Av The man was reading his paper.
+
+
+

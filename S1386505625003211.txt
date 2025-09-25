@@ -1,0 +1,72 @@
+﻿JavaScript is disabled on your browser. Please enable JavaScript to use all the features on this page. 
+Skip to main contentSkip to article
+Brought to you by:Trent University Libraries and Archives
+
+* Journals & Books
+* Help
+* Search
+My account
+Trent University
+* View PDF
+* Download full issue
+Top of Form
+Search ScienceDirect
+
+Bottom of Form
+
+International Journal of Medical Informatics
+Volume 205, January 2026, 106104
+
+Integrating rule-based NLP and large language models for statin information extraction from clinical notes
+Author links open overlay panelSiru Liu a b, Allison B. McCoy a, Qingyu Chen c, Adam Wright a d
+Show more
+Add to Mendeley
+Share
+Cite
+https://doi.org/10.1016/j.ijmedinf.2025.106104Get rights and content
+Under a Creative Commons license
+Open access
+Highlights
+* â€¢
+A hybrid AI framework combines rule-based filtering and Large Language Models (LLMs).
+* â€¢
+The rule-based filter removesÂ >Â 77Â % of irrelevant notes with 100Â % recall.
+* â€¢
+The final classifier accurately categorized patient-level barriers with high F1 scores for intolerance (0.99), contraindications (0.81), and patient deferral (0.86).
+* â€¢
+This approach provides scalable insights to enhance clinical decision support (CDS).
+Abstract
+Background
+Identifying patient-specific barriers to statin therapy, such as intolerance or deferral, from clinical notes is a major challenge for improving cardiovascular care. Automating this process could enable targeted interventions and improve clinical decision support (CDS).
+Objective
+To develop and evaluate a novel hybrid artificial intelligence (AI) framework for accurately and efficiently extracting information on statin therapy barriers from large volumes of clinical notes.
+Methods
+The hybrid AI framework consisted of a rule-based natural language processing (NLP) filter, an LLM-based refinement filter, and an LLM-based multi-category classifier. The framework was developed on 2000 clinical notes and then retrospectively applied to a dataset of 197,761 notes from 47,192 patients at an academic medical center. Performance was evaluated against manual chart review for classifying statin intolerance, contraindications, and patient deferral.
+Results
+The framework was efficient, with the initial filter removing over 77Â % of irrelevant notes while achieving a recall of 1.0 to ensure no relevant information was lost. The final classifier accurately categorized patient-level barriers with high F1 scores for intolerance (0.99), contraindications (0.81), and patient deferral (0.86). On the large dataset, the framework identified that 6.4Â % of patients (nÂ =Â 3,027) had documented intolerance, 0.7Â % (nÂ =Â 310) had contraindications, and 2.9Â % (nÂ =Â 1,391) had deferred therapy.
+Conclusion
+The hybrid AI framework provides an efficient, scalable, and trustworthy solution for processing clinical notes. It has the potential to enhance clinical decision support (CDS) systems by integrating detailed patient-level insights, improving adherence to clinical guidelines, and reducing provider burden. Future research should focus on implementing CDS tools that leverage extracted information to address barriers to statin therapy and optimize patient outcomes.
+* Previous article in issue
+* Next article in issue
+Keywords
+Clinical decision support
+Large language model
+Primary health care
+Hydroxymethylglutaryl-coa reductase inhibitors
+Heart disease risk factors
+Patient compliance
+Recommended articles
+Cited by (0)
+Â(c) 2025 The Author(s). Published by Elsevier B.V.
+Recommended articles
+No articles found.
+
+* About ScienceDirect
+* Remote access
+* Contact and support
+* Terms and conditions
+* Privacy policy
+Cookies are used by this site. Cookie Settings
+All content on this site: Copyright Â(c) 2025 Elsevier B.V., its licensors, and contributors. All rights are reserved, including those for text and data mining, AI training, and similar technologies. For all open access content, the relevant licensing terms apply.
+
+

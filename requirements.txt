@@ -1,0 +1,182 @@
+SALT Transcription & C-Unit Segmentation Requirements (CARE Lab)
+
+Source: CARE Lab SALT Transcription & C-Unit Segmentation Guide (attached).
+Scope: Enumerate all rules required for orthographic transcription and C-unit segmentation.
+
+1) Transcript Header & Identifiers
+- Speaker codes: $Av = Avatar, $P = Participant. Place at the top to identify speakers.
+- Header lines marked with "+":
+  + Language: English (or applicable language)
+  + ParticipantId: (name of file)
+  + Context: Assessment vignette, Be EPIC-VR
+  + Date and initials of Verbal Transcription: DD/MM/YYYY
+  + Date and initials of Nonverbal Transcription: DD/MM/YYYY
+  + Date and initials of FINAL Transcription: DD/MM/YYYY
+- Concomitant behaviours noted at the beginning using + lines (vocal quality, distracting sounds, breathing, sighs, whistles, etc.).
+- Comment lines: Use "=" at line start for transcriber comments (not analyzed).
+
+2) Time Markers
+- Use "- 0:00" at the beginning of the transcript.
+- Include end time marker at transcript end: "- X:XX".
+
+3) Speaker & Nonverbal Coding
+- Verbal utterances: prefix with speaker label and colon, e.g., "Av:" or "P:".
+- Nonverbal behaviours with communicative intent: place inside braces {} within the utterance.
+  Example: P: Hi Linda {PN: gently touches Av's shoulder. AvN: smiles}
+- If giving contextual information (scene-setting) rather than a coded nonverbal, do NOT use a colon after the speaker tag inside the braces.
+  Correct: {Av laying in bed}
+  Incorrect: {Av: laying in bed}
+- Timing of nonverbal codes:
+  - If nonverbal happens concurrently with speech, keep code on the same line.
+  - If nonverbal occurs after the speech segment, put the nonverbal code on the next line, still within {}.
+
+4) Pauses
+- Intra-utterance pause (within same speaker’s c-unit): use ":". If ≥ 2 seconds, include rounded duration, e.g., ":05".
+  Example: P: My name is Brenda :05 from VON.
+  For ~1.5–1.9 second pauses within an utterance, use ":" immediately before the next word.
+  Example: P: Do you want the blue shirt :or the red shirt?
+- Inter-utterance pause (between utterances of Av or P): use ";". If ≥ 2 seconds, include rounded duration, e.g., "; :03".
+  Example:
+    P: Do you want to get up
+    ; :05
+    P: and get some breakfast?
+- If there is a ~1.5–1.9s pause between utterances of the same speaker, use ":" at the start of the next c-unit (not ";").
+  Example:
+    P: Do you want to get up
+    P: :and eat some breakfast?
+- Durations ≥ 2.0s: round to nearest second; round up at half-second.
+  Examples: 2.3s → :02; 1.5s → :02.
+
+5) End of Utterance Punctuation (at end of each c-unit)
+- Period "." for statements/comments. Do not use a period for abbreviations.
+- Exclamation "!" for surprise/exclamation.
+- Question mark "?" for questions.
+
+6) Overlap & Abandonment
+- Overlapping speech: use angle brackets <> around overlapping segments at both places.
+  Example: P: Do you want <apples> Av: <yes>
+- Abandoned utterance: use ">" at end when speaker does not complete thought and is not interrupted.
+  Example:
+    Av: and then she>
+    Av: I want dinner.
+  Distinguish from mazes (revisions) which are coded with parentheses ().
+
+7) Unintelligible Speech
+- X marks an unintelligible word (e.g., Av: The man is read/ing the X newspaper.)
+- XX marks an unintelligible segment of unspecified length.
+- XXX marks an entirely unintelligible utterance.
+
+8) Mazes, Interjections, and Filled Pauses
+- Mazes (filled pauses, false starts, repetitions, reformulations, interjections) are enclosed in parentheses ().
+  General rule: Removing the maze content should leave a grammatical remainder that can stand alone as the c-unit.
+- Revisions/reformulations: If there is a similar start to the c-unit and a revised continuation, the revised portions remain in (). The final intended form appears outside ().
+  Example: Av: The (woma*) (:man) woman went to the store.
+- Interjections may be included in mazes as appropriate.
+- Filled pauses: annotate within mazes using [FP].
+  Example: Av: The (uh [FP]) boy jump/ed up on the table.
+  Typical filled pauses include: "uh", "um", "hm", "er", "like", "ah", etc.
+
+9) Omissions, Partial Words, Bound Morphemes
+- Use an asterisk after one or more initial letters to indicate an unfinished word.
+  Example: Av: The (w*) man got up from the chair.
+- Use an asterisk before a word to indicate an obligatory but omitted word/part of speech.
+  Examples:
+    Av: Give it *to me.
+    Av: *SUBJ went to the store.  (Use *DET, *SUBJ, *VERB, *COP, *AUX to indicate type.)
+- Use "/*" to indicate an omitted bound morpheme.
+  Example: Av: The car go/*s fast.
+
+10) Morphological Marking
+- Use "/" notation to mark bound morphemes (inflectional endings) on verbs and other words.
+  Examples:
+    Av: When the boy look/ed in the jar he saw that the frog was missing.
+    Av: The (uh [FP]) boy jump/ed up on the table.
+    Av: The wife pack/ed her bag.
+    Av: She crash/ed the car into a tree.
+- This marking helps identify grammatical morphemes for linguistic analysis.
+
+11) Linked Words
+- Use underscore "_" to link multiple words that should be treated as a single token (e.g., titles, proper names, repeated phrases).
+  Examples: fire_truck; Mr_Frog; %woof_woof.
+
+12) Sound Effects
+- Use percent sign "%" to identify sound effects.
+  Example: Av: The dog said %woof_woof.
+
+13) Special Symbols
+- Use "^" to indicate incomplete utterances that trail off (different from abandoned utterances marked with ">").
+  Example: P: Can I walk you down to the ^
+- This typically occurs when speech fades out or is cut off by external factors.
+
+14) Spelling & Lexical Conventions (accepted forms)
+- Affirmative: okay, ok, yeah, yup, yes
+- Negative: no, nope, nah
+- Concatenatives: gonna, gotta, wanna, hafta, oughta, betcha
+- Numbers: 21 or twentyone
+- Other: ain't, oh, uhoh, oops, ooh, huh, hmm
+
+15) C-Unit Definition
+- A C-unit (communication unit): an independent (main) clause with all its modifiers.
+- Includes the main clause with all subordinate clauses attached to it.
+- Cannot be further divided without losing meaning.
+- A clause contains a subject (noun phrase) and a predicate (verb phrase).
+  Examples:
+    Main clause only: Av: The wife was angry.
+    Main + subordinate: Av: When the boy look/ed in the jar he saw that the frog was missing.
+
+16) C-Unit Segmentation Rules
+- Coordinating conjunctions: Split into two c-units when linking two main clauses.
+  Coordinators include: and, or, but, so (not "so that"), and then.
+  Example:
+    Av: The wife pack/ed her bag.
+    Av: and she left him.
+- Subordinating conjunctions: Keep main + subordinate clause together as one c-unit.
+  Subordinators include: because, that, when, who, after, before, so that, which, although, if, unless, while, as, how, until, like, where, since.
+  Example: Av: She came back because she crash/ed the car into a tree.
+- "So" can be coordinating or subordinating:
+  - Coordinating unless meaning is "so that" (purpose), then subordinating.
+  Examples:
+    Coordinating: Av: They were happy again. Av: So they lived happily ever after.
+    Subordinating (purpose): Av: He had to call the insurance company so the car would get fix/ed.
+- Yes/No/Okay responses: When a speaker responds with yes/no/okay, treat as a separate c-unit.
+  Example: P: Are you finished? Av: Yeah.
+- Conjunction-reduced (CONJRED): Recognize reduced conjunctions that omit the subject but retain a verb referring to the prior subject.
+  - Treat as a new c-unit when it begins with "and" but lacks a new subject.
+  - Per 2023 update: DO NOT add the *CONJRED code tag; only segment appropriately.
+  Example:
+    Av: The wife went up to her room.
+    Av: and pack/ed her bag.
+- Do NOT split the c-unit for a conjunction joining two nouns within a clause.
+  Example: Av: I want to wear the red shirt and blue pants.
+- Tags and questions as tags: Phrases like "you know", "I guess", "I mean" are not segmented as separate c-units; keep them within the utterance.
+  Examples:
+    Statement with tag: Av: She smash/ed the car into the tree I guess.
+    Question with tag: Av: She went out the door right?
+- Dialogue quotes:
+  - Dialogue embedded within an utterance counts as one c-unit.
+  - Successive main clauses within dialogue quotes are counted as separate c-units.
+  Example: Av: She said I/'ve had enough. Av: I am leave/ing you!
+
+17) Putting It Together: Ordering & Formatting
+- Start with header (+ lines), speaker identification ($Av/$P), and initial time marker "- 0:00".
+- Transcribe utterances line-by-line with speaker codes (Av:/P:), applying:
+  - C-unit segmentation rules
+  - End-of-utterance punctuation
+  - Pauses (: intra, ; inter) with durations when ≥ 2s, special handling for ~1.5–1.9s as above
+  - Mazes () and [FP] for filled pauses; omissions (*, /*); unintelligible (X/XX/XXX)
+  - Nonverbal {} placement and timing rules
+  - Overlap <> and abandonment > as needed
+  - Lexical/spelling conventions
+- Conclude with final time marker "- X:XX".
+
+Implementation Notes for Automation (for future development)
+- Timestamp conversion: Convert Descript format [HH:MM:SS] to SALT format (- M:SS for time markers, pause codes for intervals).
+- Detect and normalize speakers (Av/P) from source.
+- Strip or map timestamps to pause codes where possible; round durations as specified.
+- Apply conjunction-based segmentation (coordinate vs subordinate) with lexicon lists provided.
+- Detect filled pauses from a whitelist (uh, um, hm, er, like, ah, etc.) and wrap in () with [FP].
+- Identify mazes via repeated/revised starts; keep final intended form outside ().
+- Preserve existing punctuation where correct; add . ! ? as required.
+- Handle special codes: *, /*, X/XX/XXX, {}, <>, >, _, %, per rules above.
+
+End of requirements.
