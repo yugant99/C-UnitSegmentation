@@ -111,7 +111,8 @@ class RuleBasedProcessor:
     
     def segment_cunits(self, text: str, speaker: str) -> List[str]:
         """
-        Segment text into proper C-units by splitting on coordinating conjunctions
+        Segment text into proper C-units
+        Split on sentence boundaries (., !, ?) but not inside parentheses
         """
         if not text.strip():
             return [text]
@@ -123,40 +124,29 @@ class RuleBasedProcessor:
         if clean_text.startswith(f"{speaker}:"):
             clean_text = clean_text[len(f"{speaker}:"):].strip()
         
-        # Split on coordinating conjunctions but preserve "so that"
-        segments = []
-        current_segment = ""
-        words = clean_text.split()
+        # Split on sentence boundaries, but not inside parentheses (mazes/filled pauses)
+        # Use negative lookahead to avoid splitting inside parentheses
+        result = []
+        current_sent = ""
+        paren_depth = 0
         
-        i = 0
-        while i < len(words):
-            word = words[i].lower().strip('.,!?')
-            
-            # Check for "so that" (subordinating)
-            if word == 'so' and i + 1 < len(words) and words[i + 1].lower().strip('.,!?') == 'that':
-                current_segment += f" {words[i]} {words[i + 1]}"
-                i += 2
-                continue
-            
-            # Check for coordinating conjunctions
-            if word in self.coordinating_conjunctions and current_segment.strip():
-                # Finish current segment
-                segments.append(f"{speaker}: {current_segment.strip()}")
-                # Start new segment with conjunction
-                if word == 'and':
-                    current_segment = words[i].capitalize()  # "And" at start
-                else:
-                    current_segment = words[i]
-            else:
-                current_segment += f" {words[i]}"
-            
-            i += 1
+        for char in clean_text:
+            current_sent += char
+            if char == '(':
+                paren_depth += 1
+            elif char == ')':
+                paren_depth -= 1
+            elif char in '.!?' and paren_depth == 0:
+                # End of sentence outside parentheses
+                if current_sent.strip():
+                    result.append(f"{speaker}: {current_sent.strip()}")
+                current_sent = ""
         
-        # Add final segment
-        if current_segment.strip():
-            segments.append(f"{speaker}: {current_segment.strip()}")
+        # Add any remaining content
+        if current_sent.strip():
+            result.append(f"{speaker}: {current_sent.strip()}")
         
-        return segments if segments else [text]
+        return result if result else [text]
     
     def detect_repetitions_and_mazes(self, text: str) -> str:
         """
@@ -196,16 +186,22 @@ class RuleBasedProcessor:
         processed_words = []
         
         for i, word in enumerate(words):
-            # Clean word for comparison
+            # Clean word for comparison (remove all non-word characters)
             clean_word = re.sub(r'[^\w]', '', word.lower())
             
             if clean_word in self.filled_pauses:
-                # Check if it's followed by punctuation
-                if word.endswith((',', '.', '!', '?')):
+                # Check if word is already in parentheses (from maze detection)
+                if word.startswith('(') and word.endswith(')'):
+                    # Already in parentheses - just add [FP] marker inside
+                    base = word[1:-1]  # Remove outer parentheses
+                    processed_words.append(f"({base} [FP])")
+                elif word.endswith((',', '.', '!', '?')):
+                    # Has punctuation at end
                     base_word = word[:-1]
                     punct = word[-1]
                     processed_words.append(f"({base_word} [FP]){punct}")
                 else:
+                    # Normal case
                     processed_words.append(f"({word} [FP])")
             else:
                 processed_words.append(word)
@@ -251,6 +247,9 @@ class RuleBasedProcessor:
     
     def clean_text(self, text: str) -> str:
         """Enhanced text cleaning and normalization with SALT formatting"""
+        # Remove any remaining Descript timestamps from content
+        text = re.sub(r'\[\d{2}:\d{2}:\d{2}\]', '', text)
+        
         # Remove extra whitespace
         text = re.sub(r'\s+', ' ', text.strip())
         
@@ -304,9 +303,10 @@ class RuleBasedProcessor:
         # Add header
         processed_lines.extend(self.add_salt_header(filename))
         
-        # Track timing for pause calculation
+        # Track timing for pause calculation and time markers
         prev_timestamp = None
         prev_speaker = None
+        last_time_marker_seconds = None
         
         # Process each line
         for line_idx, line in enumerate(lines):
@@ -328,14 +328,32 @@ class RuleBasedProcessor:
                 
                 # Parse timestamp
                 curr_timestamp = self.parse_timestamp(f"[{timestamp_str}]")
+                curr_total_seconds = curr_timestamp[0] * 3600 + curr_timestamp[1] * 60 + curr_timestamp[2]
                 
                 # Add time marker if at major intervals (every minute or significant gaps)
                 if prev_timestamp is None:
                     # First timestamp - add initial time marker
                     processed_lines.append(self.format_salt_timestamp(*curr_timestamp))
+                    last_time_marker_seconds = curr_total_seconds
                 else:
                     # Calculate pause duration
                     pause_duration = self.calculate_pause_duration(prev_timestamp, curr_timestamp)
+                    
+                    # Check if we should add a new time marker (Rule 3)
+                    # Add time markers at scene transitions (30+ second gaps) or major intervals
+                    should_add_time_marker = False
+                    if pause_duration >= 30:  # Scene transition
+                        should_add_time_marker = True
+                    elif last_time_marker_seconds is not None:
+                        seconds_since_last_marker = curr_total_seconds - last_time_marker_seconds
+                        # Only add markers at significant intervals to avoid over-segmentation
+                        # Gold standard shows markers every 2-4 minutes, so use 180 seconds (3 min)
+                        if seconds_since_last_marker >= 180:
+                            should_add_time_marker = True
+                    
+                    if should_add_time_marker:
+                        processed_lines.append(self.format_salt_timestamp(*curr_timestamp))
+                        last_time_marker_seconds = curr_total_seconds
                     
                     # Use improved pause timing
                     if pause_duration >= 1.5:  # Significant pause
@@ -446,6 +464,60 @@ class RuleBasedProcessor:
         return results
 
 
+def test_rule_3_time_markers():
+    """Test Rule 3: Time Marker Conversion"""
+    print("\n" + "="*60)
+    print("TESTING RULE 3: TIME MARKER CONVERSION")
+    print("="*60)
+    
+    processor = RuleBasedProcessor()
+    
+    test_cases = [
+        {
+            "name": "Initial time marker",
+            "input": "[00:00:00] P: Good morning.",
+            "expected_contains": "-0:00"
+        },
+        {
+            "name": "Time marker at 2 minutes",
+            "input": "[00:02:30] P: Hello.",
+            "expected_contains": "-2:30"
+        },
+        {
+            "name": "Time marker at 10 minutes",
+            "input": "[00:10:15] P: Good afternoon.",
+            "expected_contains": "-10:15"
+        },
+        {
+            "name": "Time marker with hours",
+            "input": "[01:05:45] P: Still here.",
+            "expected_contains": "-65:45"
+        },
+    ]
+    
+    passed = 0
+    failed = 0
+    
+    for test in test_cases:
+        result = processor.process_transcript(test["input"], "test.txt")
+        
+        if test["expected_contains"] in result:
+            print(f"✅ PASS: {test['name']}")
+            print(f"   Found: {test['expected_contains']}")
+            passed += 1
+        else:
+            print(f"❌ FAIL: {test['name']}")
+            print(f"   Expected to contain: {test['expected_contains']}")
+            print(f"   Got: {result[:200]}")
+            failed += 1
+    
+    print("\n" + "-"*60)
+    print(f"Rule 3 Test Results: {passed} passed, {failed} failed")
+    print("="*60 + "\n")
+    
+    return failed == 0
+
+
 def main():
     """Command line interface for rule-based processing"""
     parser = argparse.ArgumentParser(
@@ -463,8 +535,18 @@ def main():
         default=Path("/Users/yuganthareshsoni/CunitSegementation/rule_based_output"),
         help="Directory to save rule-based processed transcripts"
     )
+    parser.add_argument(
+        "--test-rule3",
+        action="store_true",
+        help="Run Rule 3 (Time Marker Conversion) unit tests"
+    )
     
     args = parser.parse_args()
+    
+    # Run tests if requested
+    if args.test_rule3:
+        success = test_rule_3_time_markers()
+        return 0 if success else 1
     
     # Initialize processor
     processor = RuleBasedProcessor()

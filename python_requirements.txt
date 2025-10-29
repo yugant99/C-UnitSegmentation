@@ -1,0 +1,22 @@
+# Python Requirements for C-Unit Segmentation System
+# Install with: pip install -r python_requirements.txt
+
+# Core dependencies
+numpy>=1.21.0
+pandas>=1.3.0
+
+# NLP and text processing
+spacy>=3.5.0
+python-docx>=0.8.11
+
+# Machine Learning / LLM
+torch>=2.0.0
+transformers>=4.30.0
+
+# Utilities
+argparse
+pathlib
+
+# After installing, download the spaCy model:
+# python -m spacy download en_core_web_sm
+

@@ -1,0 +1,104 @@
+
+═══════════════════════════════════════════════════════════════════════════════
+                    C-UNIT SEGMENTATION SYSTEM EVALUATION REPORT
+═══════════════════════════════════════════════════════════════════════════════
+
+📊 OVERALL SYSTEM PERFORMANCE:
+├─ Files Evaluated: 10
+├─ Average C-Unit Accuracy: 7.8%
+├─ Average Pause Accuracy: 2.1%
+├─ Average Filled Pause Accuracy: 45.5%
+├─ Average Morphological Accuracy: 60.0%
+├─ Average Speaker Accuracy: 50.0%
+└─ Average Overall Similarity: 13.6%
+
+📈 PERFORMANCE GRADE: D (Needs Improvement)
+
+📋 DETAILED RESULTS BY FILE:
+
+1. VR_Howl's_Moving_Castle_Transcript (Rule-Based Processed).txt
+   ├─ Lines: 136 (System) vs 190 (Gold)
+   ├─ C-Unit Accuracy: 11.1%
+   ├─ Pause Accuracy: 0.0%
+   ├─ Filled Pause Accuracy: 50.0%
+   ├─ Morphological Accuracy: 0.0%
+   └─ Overall Similarity: 19.2%
+
+2. VR_Falcon (Rule-Based Processed).txt
+   ├─ Lines: 186 (System) vs 179 (Gold)
+   ├─ C-Unit Accuracy: 0.9%
+   ├─ Pause Accuracy: 4.2%
+   ├─ Filled Pause Accuracy: 48.1%
+   ├─ Morphological Accuracy: 100.0%
+   └─ Overall Similarity: 3.8%
+
+3. VR_Django_Unchained_Transcript (Rule-Based Processed).txt
+   ├─ Lines: 199 (System) vs 239 (Gold)
+   ├─ C-Unit Accuracy: 3.5%
+   ├─ Pause Accuracy: 3.8%
+   ├─ Filled Pause Accuracy: 60.0%
+   ├─ Morphological Accuracy: 0.0%
+   └─ Overall Similarity: 7.8%
+
+4. VR_Talk_To_Me (Rule-Based Processed).txt
+   ├─ Lines: 137 (System) vs 171 (Gold)
+   ├─ C-Unit Accuracy: 13.8%
+   ├─ Pause Accuracy: 0.0%
+   ├─ Filled Pause Accuracy: 66.7%
+   ├─ Morphological Accuracy: 100.0%
+   └─ Overall Similarity: 16.4%
+
+5. VR_Dodgeball_Transcript (Rule-Based Processed).txt
+   ├─ Lines: 199 (System) vs 213 (Gold)
+   ├─ C-Unit Accuracy: 10.2%
+   ├─ Pause Accuracy: 0.0%
+   ├─ Filled Pause Accuracy: 48.1%
+   ├─ Morphological Accuracy: 0.0%
+   └─ Overall Similarity: 29.5%
+
+6. VR_Get_Out_Transcript (Rule-Based Processed).txt
+   ├─ Lines: 182 (System) vs 212 (Gold)
+   ├─ C-Unit Accuracy: 3.6%
+   ├─ Pause Accuracy: 3.1%
+   ├─ Filled Pause Accuracy: 50.0%
+   ├─ Morphological Accuracy: 0.0%
+   └─ Overall Similarity: 5.9%
+
+7. VR_Spirited_Away_Transcript (Rule-Based Processed).txt
+   ├─ Lines: 147 (System) vs 223 (Gold)
+   ├─ C-Unit Accuracy: 8.0%
+   ├─ Pause Accuracy: 1.6%
+   ├─ Filled Pause Accuracy: 0.0%
+   ├─ Morphological Accuracy: 100.0%
+   └─ Overall Similarity: 10.1%
+
+8. VR_Lady_Bird_Transcript (Rule-Based Processed).txt
+   ├─ Lines: 165 (System) vs 170 (Gold)
+   ├─ C-Unit Accuracy: 4.3%
+   ├─ Pause Accuracy: 3.0%
+   ├─ Filled Pause Accuracy: 57.1%
+   ├─ Morphological Accuracy: 100.0%
+   └─ Overall Similarity: 4.5%
+
+9. VR_Call_Me_by_Your_Name_Transcript (Rule-Based Processed).txt
+   ├─ Lines: 144 (System) vs 151 (Gold)
+   ├─ C-Unit Accuracy: 6.2%
+   ├─ Pause Accuracy: 2.1%
+   ├─ Filled Pause Accuracy: 0.0%
+   ├─ Morphological Accuracy: 100.0%
+   └─ Overall Similarity: 10.3%
+
+10. VR_GhostRider (Rule-Based Processed).txt
+   ├─ Lines: 164 (System) vs 142 (Gold)
+   ├─ C-Unit Accuracy: 16.7%
+   ├─ Pause Accuracy: 3.3%
+   ├─ Filled Pause Accuracy: 75.0%
+   ├─ Morphological Accuracy: 100.0%
+   └─ Overall Similarity: 28.2%
+
+🔍 SYSTEM ANALYSIS:
+├─ Strengths: Basic formatting
+├─ Areas for Improvement: Pause timing accuracy, Morphological marking
+└─ Recommendation: System needs further refinement before deployment
+
+═══════════════════════════════════════════════════════════════════════════════

@@ -37,6 +37,33 @@ class SALTEvaluator:
     
     def __init__(self):
         self.results = []
+    
+    # --- Normalization helpers for robust matching ---
+    def _canonical_stem(self, filename: str) -> str:
+        """Create a canonical key from a filename for pairing.
+
+        - Remove extension
+        - Drop trailing parenthetical suffixes like (FLAN-T5 Refined), (Orthographic Segmented Transcript)
+        - Remove trailing "_Transcript" or " Transcript"
+        - Collapse whitespace and lowercase
+        """
+        s = filename
+        s = re.sub(r"\.txt$", "", s, flags=re.IGNORECASE)
+        # remove any trailing parenthetical block
+        s = re.sub(r"\s*\([^)]*\)\s*$", "", s)
+        # remove trailing _Transcript or  Transcript
+        s = re.sub(r"(?:[_ ]Transcript)\s*$", "", s, flags=re.IGNORECASE)
+        # collapse spaces and lowercase
+        s = re.sub(r"\s+", " ", s).strip().lower()
+        return s
+
+    def _norm_line(self, s: str) -> str:
+        """Normalize a line for fuzzy comparison."""
+        s = s.strip().lower()
+        s = re.sub(r"\s+", " ", s)
+        # strip any inline timestamps like [HH:MM:SS]
+        s = re.sub(r"\[\d{2}:\d{2}:\d{2}\]", "", s)
+        return s
         
     def extract_c_units(self, text: str) -> List[str]:
         """Extract C-units (lines starting with P: or Av:)"""
@@ -84,16 +111,18 @@ class SALTEvaluator:
         return matcher.ratio()
     
     def compare_lists(self, system_list: List[str], gold_list: List[str]) -> float:
-        """Compare two lists and return accuracy percentage"""
+        """Compare two lists and return accuracy percentage with fuzzy matching."""
         if not gold_list:
             return 1.0 if not system_list else 0.0
         
-        # Simple approach: count exact matches
+        # Fuzzy index-aligned matches
         matches = 0
         max_len = max(len(system_list), len(gold_list))
         
         for i in range(min(len(system_list), len(gold_list))):
-            if system_list[i] == gold_list[i]:
+            a = self._norm_line(system_list[i])
+            b = self._norm_line(gold_list[i])
+            if SequenceMatcher(None, a, b).ratio() >= 0.90:
                 matches += 1
         
         return matches / max_len if max_len > 0 else 0.0
@@ -178,31 +207,25 @@ class SALTEvaluator:
         )
     
     def find_matching_files(self, system_dir: Path, gold_dir: Path) -> List[Tuple[Path, Path]]:
-        """Find matching system and gold standard files"""
-        matches = []
+        """Find matching system and gold standard files using canonical stems."""
+        matches: List[Tuple[Path, Path]] = []
         
-        # Get all system files
+        # All system outputs - support both FLAN-T5 and Rule-Based files
         system_files = list(system_dir.glob("*FLAN-T5 Refined*.txt"))
+        if not system_files:
+            # Try Rule-Based Processed files
+            system_files = list(system_dir.glob("*Rule-Based Processed*.txt"))
+        
+        # Index gold files by canonical stem
+        gold_index: Dict[str, Path] = {}
+        for gold_file in gold_dir.glob("*Orthographic Segmented Transcript*.txt"):
+            key = self._canonical_stem(gold_file.name)
+            gold_index[key] = gold_file
         
         for system_file in system_files:
-            # Extract base name to find corresponding gold file
-            base_name = system_file.name.replace(" (FLAN-T5 Refined)", "")
-            base_name = base_name.replace("_Transcript", "_Transcript ")  # Handle naming variations
-            
-            # Look for gold standard file
-            potential_gold_names = [
-                f"{base_name.replace('.txt', '')} (Orthographic Segmented Transcript).txt",
-                f"{base_name.replace('.txt', '')}  (Orthographic Segmented Transcript).txt",  # Double space
-            ]
-            
-            gold_file = None
-            for gold_name in potential_gold_names:
-                gold_path = gold_dir / gold_name
-                if gold_path.exists():
-                    gold_file = gold_path
-                    break
-            
-            if gold_file:
+            key = self._canonical_stem(system_file.name)
+            gold_file = gold_index.get(key)
+            if gold_file is not None:
                 matches.append((system_file, gold_file))
                 print(f"✅ Found match: {system_file.name} ↔ {gold_file.name}")
             else:

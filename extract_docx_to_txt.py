@@ -40,6 +40,31 @@ def extract_docx_text(docx_path: Path) -> str:
     return text
 
 
+def map_output_name(stem: str) -> str:
+    """Map a DOCX filename stem to the normalized TXT filename expected by the pipeline.
+
+    - Raw variants (D/before Segmentation) → (Descript generated).txt
+    - Gold variants (Final/after Segmentation) → (Orthographic Segmented Transcript).txt
+    - Otherwise: keep stem + .txt
+    """
+    name = stem.strip()
+
+    # Raw variants → (Descript generated)
+    if name.endswith(" (D)"):
+        return name[:-4] + " (Descript generated).txt"
+    if name.endswith(" - before Segmentation"):
+        return name[:-22] + " (Descript generated).txt"
+
+    # Gold variants → (Orthographic Segmented Transcript)
+    if name.endswith(" - Final"):
+        return name[:-8] + " (Orthographic Segmented Transcript).txt"
+    if name.endswith(" - after Segmentation"):
+        return name[:-21] + " (Orthographic Segmented Transcript).txt"
+
+    # Fallback: keep stem
+    return name + ".txt"
+
+
 def convert_directory(input_dir: Path, output_dir: Path) -> list[Path]:
     """Convert all .docx files in input_dir to .txt files in output_dir.
 
@@ -58,7 +83,8 @@ def convert_directory(input_dir: Path, output_dir: Path) -> list[Path]:
             print(f"[WARN] Failed to read '{docx_file.name}': {exc}", file=sys.stderr)
             continue
 
-        out_path = output_dir / f"{docx_file.stem}.txt"
+        out_filename = map_output_name(docx_file.stem)
+        out_path = output_dir / out_filename
         try:
             out_path.write_text(text, encoding="utf-8")
             written.append(out_path)
@@ -76,7 +102,7 @@ def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description="Extract text from .docx files to .txt")
     parser.add_argument(
         "--input-dir",
-        default="/Users/yuganthareshsoni/CunitSegementation/Be EPIC-VR transcripts examples 3",
+        default="/Users/yuganthareshsoni/CunitSegementation/Be EPIC-VR transcript examplesV02",
         help="Absolute path to directory containing .docx files",
     )
     parser.add_argument(
